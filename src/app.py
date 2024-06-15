@@ -8,9 +8,12 @@ import pandas as pd
 # Check yfinance docs, because it might be updated.
 # In the app you can select stocks from the dropdown menu, also you can use the date picker and hit submit
 # to reload the information from the web. A lot of things we've already implemented in the past.
+import dash_auth
+
+USERNAME_PASSWORD_PAIRS=[['username', 'password'], ['N', 'K']]
 
 app = Dash(__name__)
-server = app.server
+dash_auth.BasicAuth(app, USERNAME_PASSWORD_PAIRS)
 
 # Getting the data concerning the tickers list we want to use in our app:
 nsdq = pd.read_csv('NASDAQcompanylist.csv')
